@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  municipality: MyString
+  court: MyString
+  infractor_name: MyString
+  vehicle_plate: MyString
+  vehicle: MyString
+  citation_day: 2014-05-26 23:17:13
+
+two:
+  municipality: MyString
+  court: MyString
+  infractor_name: MyString
+  vehicle_plate: MyString
+  vehicle: MyString
+  citation_day: 2014-05-26 23:17:13

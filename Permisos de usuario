@@ -1,0 +1,23 @@
+
+     Recurso      |  Funcionalidades |           Roles 		         |
+---------------------------------------------------------------------
+				  | 	Create       |	        Admin		         |
+Usuario web 	  |		Read	     |			Admin		         |
+		  		  |		Update       |			Admin		         |	
+		  		  |		Destroy      |			Admin      			 |	
+---------------------------------------------------------------------
+		  		  | 	Create       |			Admin			     |	
+Usuario movil	  |		Read	     |	Admin, Municipalidad, Juez(?)| 
+		  		  |		Update       |			Admin			     |
+		  		  |		Destroy      |			Admin			     |
+---------------------------------------------------------------------
+		 		  | 	Create       |			Ninguno*** 		     |
+Parte		 	  |		Read	     |			Todos**		    	 |
+		  		  |		Update       |			Juez (algunos campos)|
+		  		  |		Destroy      |			Ninguno		     	 |
+---------------------------------------------------------------------
+
+Roles: Admin, Municipalidad, Juez, Invitado
+
+** Si ponemos la tabla se podría ver los partes de cualquier persona y no es la idea. Cómo seria este acceso?
+*** Se crean automaticamente al llegar x api

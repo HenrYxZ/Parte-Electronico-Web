@@ -1,0 +1,37 @@
+<h1>Listing admins</h1>
+
+<table class ="table table-bordered">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th></th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.email %></td>
+
+        <td>
+        <% if can? :read, @admin %>  
+          <%= link_to 'Show', admin %>
+        <%end%>
+        <% if can? :update, @admin %>
+          <%= link_to 'Edit', edit_admin_path(admin) %>
+        <%end%>
+        <% if can? :destroy, @admin %>
+        <%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, @admin %>
+<%= link_to 'New Admin', new_admin_path %>
+<%end%>

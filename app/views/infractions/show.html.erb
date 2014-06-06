@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @infraction.description %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @infraction.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @infraction.longitude %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @infraction.address %>
+</p>
+
+<p>
+  <strong>License code:</strong>
+  <%= @infraction.license_code %>
+</p>
+
+<%= link_to 'Edit', edit_infraction_path(@infraction) %> |
+<%= link_to 'Back', infractions_path %>

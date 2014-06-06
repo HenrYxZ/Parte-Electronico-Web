@@ -1,0 +1,33 @@
+<%= form_for(@ticket) do |f| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+      <% @ticket.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    
+    <%= f.text_field :vehicle_plate, :placeholder => "patente" %>
+    <%= f.text_field :license_code, :placeholder =>"licencia" %>
+    <%= f.datetime_field :date , :placeholder => "fecha"%>
+    <%= f.text_field :latitude, :placeholder =>"latitud" %>
+    <%= f.text_field :longitude ,:placeholder => "longitud"%>
+    <%= f.text_field :first_name, :placeholder =>"nombre" %>
+    <%= f.text_field :last_name, :placeholder =>"apellido" %>
+    <%= f.text_field :address, :placeholder =>"direccion" %>
+    <%= f.text_field :email, :placeholder =>"mail" %>
+    <%= f.text_field :rut, :placeholder =>"rut" %>
+    <%= f.text_field :vehicle, :placeholder =>"auto" %>
+    
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

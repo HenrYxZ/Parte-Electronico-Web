@@ -1,0 +1,39 @@
+<h1>Listado de partes</h1>
+
+<table class ="table table-bordered">
+  <thead>
+    <tr>
+      <th>Folio</th>
+      <th>Rut</th>
+      <th>Nombre</th>
+      <th>Apeliido</th>
+      <th>Patente</th>
+      <th>Fecha</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= link_to ticket.id, ticket %></td>
+        <td><%= ticket.rut %></td>
+        <td><%= ticket.first_name %></td>
+        <td><%= ticket.last_name %></td>
+        <td><%= ticket.vehicle_plate %></td>
+        <td><%= ticket.date %></td>
+        <td>
+        <% if can? :read, ticket %>  
+          <%= link_to 'Show', ticket %>
+        <%end%>
+        <% if can? :update, ticket %>
+          <%= link_to 'Edit', edit_ticket_path(ticket) %>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

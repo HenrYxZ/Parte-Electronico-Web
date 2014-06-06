@@ -1,0 +1,46 @@
+<h1>Listado de Carabineros</h1>
+
+<table class ="table table-bordered">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Comisaría</th>
+      <th>Placa</th>
+      <th>Rango</th>
+      <th></th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.first_name%></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.precint %></td>
+        <td><%= user.plaque %></td>
+        <td><%= user.rank %></td>
+        <td>
+        <% if can? :read, @user %>
+        <%= link_to 'Show', user %>
+        <%end%>
+        <% if can? :update, @user %>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        <%end%>
+         <% if can? :destroy, @user %>
+        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+ <% if can? :create, @user %>
+<%= link_to 'Nuevo Usuario', new_user_path %>
+<%end%>

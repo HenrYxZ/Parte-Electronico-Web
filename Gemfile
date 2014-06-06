@@ -41,6 +41,7 @@ group :production do
 	# production server in heroku
 	gem 'unicorn'
 	gem 'rails_12factor'
+	gem 'pg'
 end
 
 # Use ActiveModel has_secure_password

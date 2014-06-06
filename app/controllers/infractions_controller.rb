@@ -1,5 +1,6 @@
 class InfractionsController < ApplicationController
   before_action :set_infraction, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /infractions
   # GET /infractions.json

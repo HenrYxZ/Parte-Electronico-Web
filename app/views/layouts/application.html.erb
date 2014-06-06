@@ -12,9 +12,10 @@
 <header>
 	<nav>
 		<ul class="nav nav-tabs">
-		
+
+		<li><%= link_to "Partes", tickets_path%></li>
 		<% if current_user %>
-   			<li><%= link_to "Partes", tickets_path%></li>
+   			
 		    <li><%= link_to "Carabineros", users_path %></li>
 		    <% if can? :manage, @admin %>
   			<li><%= link_to "Funcionarios", admins_path %></li>
@@ -25,9 +26,6 @@
   		<% else %>
     		<li><%= link_to "log in", login_path %></li>
   		<% end %>
-
-
-
 
         </ul>
 

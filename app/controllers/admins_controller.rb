@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /admins
   # GET /admins.json

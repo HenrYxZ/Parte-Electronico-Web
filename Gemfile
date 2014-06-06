@@ -37,6 +37,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+	# production server in heroku
+	gem 'unicorn'
+	gem 'rails_12factor'
+end
+
 # Use ActiveModel has_secure_password
  gem 'bcrypt-ruby', '~> 3.0.0'
 

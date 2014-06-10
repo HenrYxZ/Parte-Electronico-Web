@@ -59,4 +59,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Better printing
+gem 'awesome_print', '~> 1.2.0'
+
 ruby "2.0.0"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605064941) do
+ActiveRecord::Schema.define(version: 20140610141333) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20140605064941) do
     t.datetime "updated_at"
     t.string   "role"
   end
+
+  create_table "api_keys", force: true do |t|
+    t.string   "access_token"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
 
   create_table "infractions", force: true do |t|
     t.datetime "created_at"

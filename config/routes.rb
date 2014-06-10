@@ -16,6 +16,12 @@ Partes::Application.routes.draw do
 
   root to: "home#index"
 
+  scope 'api' do
+    post '/login', to: 'api#login'
+    get '/users/:access_token', to: 'api#users'
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

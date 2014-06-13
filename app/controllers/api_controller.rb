@@ -33,6 +33,32 @@ class ApiController < ApplicationController
 		render json: (@users.map { |u| u.as_json }).to_json
 	end
 
+	def new_ticket
+		@ticket = Ticket.new()
+		@ticket.address = params[:address]
+		@ticket.date = Time.at(params[:date]).to_datetime
+		@ticket.description = params[:description]
+		@ticket.email = params[:email]
+		@ticket.first_name = params[:firstName]
+		@ticket.last_name = params[:lastName]
+		@ticket.license_code = params[:licenceCode]
+		@ticket.vehicle_plate = params[:licensePlate]
+		@ticket.location = params[:location]
+		@ticket.longitude = params[:longitude]
+		@ticket.latitude = params[:latitude]
+		@ticket.rut = params[:rut]
+		@ticket.vehicle = params[:vehicle]
+
+		@ticket.add_infractions(params[:violations])
+		# not implemented @ticket.add_pictures(params[:pictures])
+
+		if @ticket.save
+			render json: 'Parte creado con exito', status: :created
+		else
+			render json: @ticket.errors, status: :unprocessable_entity
+		end
+	end
+
 	private
 	def restrict_access
 	    api_key = ApiKey.find_by_access_token(params[:access_token])

@@ -14,6 +14,7 @@ gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-rails.git'
 
+
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 4.0.0'
 

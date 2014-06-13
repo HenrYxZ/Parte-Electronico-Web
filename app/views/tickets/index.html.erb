@@ -1,5 +1,6 @@
 <h1>Listado de partes</h1>
 
+
 <table class ="table table-bordered">
   <thead>
     <tr>
@@ -9,6 +10,7 @@
       <th>Apellido</th>
       <th>Patente</th>
       <th>Fecha</th>
+      <th>Hora</th>
       <th></th>
     </tr>
   </thead>
@@ -21,7 +23,8 @@
         <td><%= ticket.first_name %></td>
         <td><%= ticket.last_name %></td>
         <td><%= ticket.vehicle_plate %></td>
-        <td><%= ticket.date %></td>
+        <td><%= ticket.date.to_date %></td>
+        <td><%= ticket.date.strftime("%I:%M%p") %></td>
         <td>
         <% if can? :read, ticket %>  
           <%= link_to 'Show', ticket %>
@@ -34,6 +37,6 @@
   </tbody>
 </table>
 
-<br>
+
 
 

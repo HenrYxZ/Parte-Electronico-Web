@@ -1,11 +1,54 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Datos del infractor</h3>
+<p>
+	Nombre: <%= @ticket.first_name %>
+    <%= @ticket.last_name%>
+</p>
+<p>
+	Cedula de identidad: <%= @ticket.rut%>
+</p>
+<p>
+	Domicilio: <%= @ticket.address%>
+</p>
+
+<p>Citado a comparecer al <%= @ticket.user.courthouse_number %> juzgado de policía local de <%= @ticket.user.courthouse_city %> el día <%= @ticket.date.to_date+3.days %> a las <%= @ticket.date.strftime("%I:%M%p") %>  bajo apercibimiento de proceder en su rebeldía.
+</p>
+
+<h3>Infracciones</h3>
+<p>
+	<% @ticket.infractions.each do |infraction|%>
+		<%= infraction.type%>
+		<%= infraction.cost%>
+
+	<%end%>
+</p>
+
+<p>
+	Oservaciones generales:
+	<%= @ticket.description%>
+</p>
+
+<p>Cometidas en <%= @ticket.location%> , latitud <%= @ticket.latitude%>, longitud <%=@ticket.longitude%> 
+	a las  <%= @ticket.date.strftime("%I:%M%p")%>
+</p>
+
+<p>
+	Vehículo: <%=@ticket.vehicle%>
+	Patente: <%= @ticket.vehicle_plate%>
+</p>
+
+<p>
+	Testigo: <%= @ticket.user.rank%>
+	<%= @ticket.user.first_name%>
+	<%= @ticket.user.last_name%>
+</p>
+<p>
+	Placa: <%= @ticket.user.plaque%>
+</p>
+<p>
+	Fecha: <%= @ticket.date.to_date%>
+</p>
 
 
-
-
-
-
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> 
 

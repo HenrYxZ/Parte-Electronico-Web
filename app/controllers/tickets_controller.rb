@@ -5,7 +5,6 @@ class TicketsController < ApplicationController
   # GET /tickets.json
   def index
     @tickets = Ticket.all
-
   end
 
   # GET /tickets/1
@@ -62,6 +61,7 @@ class TicketsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

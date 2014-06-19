@@ -18,7 +18,7 @@ class ApiController < ApplicationController
 			user_not_found = 'No existe este usuario'
 			render json: {error: true, message: user_not_found}, status: 404
 			return
-		elsif  @user.password_digest != params[:password]
+		elsif  not @user.authenticate(params[:password_digest]) 
 			wrong_password = 'Contraseña incorrecta'
 			render json: {error: true, message: wrong_password}, status: 400
 		else

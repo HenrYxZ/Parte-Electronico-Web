@@ -63,4 +63,8 @@ end
 # Better printing
 gem 'awesome_print', '~> 1.2.0'
 
+# For image uploading
+gem 'aws-sdk'
+gem 's3_direct_upload'
+
 ruby "2.0.0"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613163105) do
+ActiveRecord::Schema.define(version: 20140619151603) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140613163105) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "password_digest",   limit: 100
+    t.string   "password",          limit: 100
     t.string   "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140613163105) do
     t.integer  "courthouse_number"
     t.string   "courthouse_city"
     t.string   "plaque"
+    t.string   "password_digest"
   end
 
 end

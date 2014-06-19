@@ -4,6 +4,6 @@ class Admin < ActiveRecord::Base
     has_secure_password
 
     def self.authenticate(email, password)
-  	Admin.find_by(email: email).try(:authenticate, password)
+  		Admin.find_by(email: email).try(:authenticate, password)
     end
 end

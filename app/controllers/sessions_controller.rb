@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
 
   def create
 
-  	admin = Admin.authenticate(params[:email], params[:password])
+  	#admin = Admin.authenticate(params[:email], params[:password])
+    admin = Admin.find_by_email(params[:email])
   	if admin
     	session[:admin_id] = admin.id
     	redirect_to root_url, :notice => "Logged in!"

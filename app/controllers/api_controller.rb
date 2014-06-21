@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-	respond_to :json
+	#respond_to :json
 	before_filter :restrict_access, except: :login
 	protect_from_forgery except: [:login, :new_ticket]
 
@@ -18,11 +18,10 @@ class ApiController < ApplicationController
 			user_not_found = 'No existe este usuario'
 			render json: {error: true, message: user_not_found}, status: 404
 			return
-		elsif  not @user.authenticate(login_params[:password_digest]) 
+		elsif  not access_token = @user.authenticate(login_params[:password_digest]) 
 			wrong_password = 'Contraseña incorrecta'
 			render json: {error: true, message: wrong_password}, status: 400
 		else
-			access_token = @user.api_key.access_token
 			render json: {access_token: access_token, authenticated: true}
 		end
 		# TODO: Usar OpenSSL para esto
@@ -54,8 +53,9 @@ class ApiController < ApplicationController
 		@ticket.latitude = ticket_params[:latitude]
 		@ticket.rut = ticket_params[:rut]
 		@ticket.vehicle = ticket_params[:vehicle]
+		@ticket.user = ApiKey.find_by_access_token(params[:access_token]).user
 
-		@ticket.add_infractions(ticket_params[:violations])
+		# @ticket.add_infractions(ticket_params[:violations])
 		# not implemented @ticket.add_pictures(ticket_params[:pictures])
 
 		if @ticket.save

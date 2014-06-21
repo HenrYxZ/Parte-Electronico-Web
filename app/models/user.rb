@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :tickets
+  has_many :infractions, through: :tickets
 	# has_secure_password
 	has_one :api_key, dependent: :destroy
 	before_save :create_pass_digest

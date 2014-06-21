@@ -3,15 +3,15 @@ class Ticket < ActiveRecord::Base
 	belongs_to :user
 
 	def add_infractions (jsonInfractions)
-
 		jsonInfractions.each do |jsonInfraction|
-			infraction = Infraction.find_by_type(jsonInfraction["type"])
-			if (infraction and (infraction.cost == jsonInfractions["value"]))
+			infraction = Infraction.find_by_type_of_infraction(jsonInfraction["type"])
+			#if (infraction and (infraction.cost == jsonInfractions["value"]))
+			if (infraction)
 				self.infractions << infraction
 			else
 				infraction = Infraction.new()
-				infraction.type = jsonInfraction["type"]
-				infraction.cost = jsonInfractions["value"]
+				infraction.type_of_infraction = jsonInfraction["type"]
+				infraction.cost = jsonInfraction["value"]
 				if infraction.save
 					self.infractions << infraction
 				else
@@ -24,6 +24,7 @@ class Ticket < ActiveRecord::Base
 	def add_pictures (jsonPictures)
 
 		jsonPictures.each do |jsonPicture|
+
 		end
 	end
 end

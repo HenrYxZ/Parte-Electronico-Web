@@ -19,6 +19,7 @@ Partes::Application.routes.draw do
   scope 'api' do
     post '/login', to: 'api#login'
     get '/users/:access_token', to: 'api#users'
+    post '/new_ticket/:access_token', to: 'api#new_ticket'
   end
 
 

@@ -38,6 +38,11 @@ class ApiController < ApplicationController
 		render json: (@users.map { |u| u.as_json(except: :password) }).to_json
 	end
 
+	##==========================================================================
+	# Recibe un nuevo parte
+	#---------------------------------------------------------------------------
+	# /api/new_ticket/:access_token
+	##==========================================================================
 	def new_ticket
 		@ticket = Ticket.new()
 		@ticket.address = ticket_params[:address]
@@ -46,7 +51,7 @@ class ApiController < ApplicationController
 		@ticket.email = ticket_params[:email]
 		@ticket.first_name = ticket_params[:firstName]
 		@ticket.last_name = ticket_params[:lastName]
-		@ticket.license_code = ticket_params[:licenceCode]
+		@ticket.license_code = ticket_params[:licenseCode]
 		@ticket.vehicle_plate = ticket_params[:licensePlate]
 		@ticket.location = ticket_params[:location]
 		@ticket.longitude = ticket_params[:longitude]
@@ -55,7 +60,7 @@ class ApiController < ApplicationController
 		@ticket.vehicle = ticket_params[:vehicle]
 		@ticket.user = ApiKey.find_by_access_token(params[:access_token]).user
 
-		# @ticket.add_infractions(ticket_params[:violations])
+		@ticket.add_infractions(ticket_params[:violations])
 		# not implemented @ticket.add_pictures(ticket_params[:pictures])
 
 		if @ticket.save
@@ -68,14 +73,14 @@ class ApiController < ApplicationController
 	private
 	def restrict_access
 	    api_key = ApiKey.find_by_access_token(params[:access_token])
-	    head :unauthorized unless api_key
+	    render json: 'Access token inválido', status: :unauthorized unless api_key
 	end
 
 	def login_params
-		params.permit(:username, :password_digest)
+		params.require(:api).permit(:username, :password_digest)
 	end
 
 	def ticket_params
-		params.permit(:address, :date, :description, :email, :firstName, :lastName, :licenceCode, :licensePlate, :location, :longitude, :latitude, :rut, :vehicle, :violations, :pictures)
+		params.require(:api).permit(:address, :date, :description, :email, :firstName, :lastName, :licenseCode, :licensePlate, :location, :longitude, :latitude, :rut, :vehicle, violations: [:type, :value], pictures: [:fileName, :type])
 	end
 end

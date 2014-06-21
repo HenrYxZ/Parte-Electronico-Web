@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-	#respond_to :json
+	respond_to :json
 	before_filter :restrict_access, except: :login
 	protect_from_forgery except: [:login, :new_ticket]
 

@@ -2,6 +2,7 @@ class ApiController < ApplicationController
 	respond_to :json
 	before_filter :restrict_access
 	skip_before_filter :login
+	protect_from_forgery except: :login
 
 	##==========================================================================
 	# Se usa para conectarse con una cuenta por primera vez y le manda el API
@@ -27,6 +28,12 @@ class ApiController < ApplicationController
 		end
 		# TODO: Usar OpenSSL para esto
 	end
+
+	##==========================================================================
+	# Envía los usuarios que hay en la base de datos
+	#---------------------------------------------------------------------------
+	# /api/users/:access_token/:password
+	##==========================================================================
 
 	def users
 		@users = User.all

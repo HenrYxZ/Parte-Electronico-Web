@@ -61,7 +61,7 @@ class ApiController < ApplicationController
 		@ticket.user = ApiKey.find_by_access_token(params[:access_token]).user
 
 		@ticket.add_infractions(ticket_params[:violations])
-		# not implemented @ticket.add_pictures(ticket_params[:pictures])
+		@ticket.add_pictures(ticket_params[:pictures])
 
 		if @ticket.save
 			render json: 'Parte creado con exito', status: :created

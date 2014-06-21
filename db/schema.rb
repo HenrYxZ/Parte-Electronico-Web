@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621232310) do
+ActiveRecord::Schema.define(version: 20140621233710) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20140621232310) do
     t.integer "ticket_id",     null: false
     t.integer "infraction_id", null: false
   end
+
+  create_table "pictures", force: true do |t|
+    t.string   "file_name"
+    t.string   "format"
+    t.integer  "ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["ticket_id"], name: "index_pictures_on_ticket_id"
 
   create_table "tickets", force: true do |t|
     t.string   "vehicle_plate"

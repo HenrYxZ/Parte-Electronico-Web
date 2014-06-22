@@ -46,7 +46,7 @@ class ApiController < ApplicationController
 	def new_ticket
 		@ticket = Ticket.new()
 		@ticket.address = ticket_params[:address]
-		@ticket.date = Time.at(ticket_params[:date]).to_datetime
+		@ticket.date = Time.at(ticket_params[:date]/1000).to_datetime
 		@ticket.description = ticket_params[:description]
 		@ticket.email = ticket_params[:email]
 		@ticket.first_name = ticket_params[:firstName]

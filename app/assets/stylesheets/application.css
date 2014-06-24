@@ -12,3 +12,10 @@
  *= require dataTables/jquery.dataTables.bootstrap
  *= require_tree .
  */
+
+
+#login-box{
+	padding: 2%;
+	padding-right: 0px;
+
+}

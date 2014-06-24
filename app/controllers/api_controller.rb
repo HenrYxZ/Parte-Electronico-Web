@@ -35,7 +35,7 @@ class ApiController < ApplicationController
 
 	def users
 		@users = User.all
-		render json: (@users.map { |u| u.as_json(except: :password) }).to_json
+		render json: (@users.map { |u| u.as_json(methods: :access_token, except: :password) }).to_json
 	end
 
 	##==========================================================================

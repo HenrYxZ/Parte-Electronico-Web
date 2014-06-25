@@ -30,12 +30,23 @@ class ApiController < ApplicationController
 	##==========================================================================
 	# Envía los usuarios que hay en la base de datos
 	#---------------------------------------------------------------------------
-	# /api/users/:access_token/:password
+	# /api/users/:access_token/
 	##==========================================================================
 
 	def users
 		@users = User.all
 		render json: (@users.map { |u| u.as_json(methods: :access_token, except: :password) }).to_json
+	end
+
+	##==========================================================================
+	# Envía los usuarios que hay en la base de datos
+	#---------------------------------------------------------------------------
+	# /api/tickets/:access_token/
+	##==========================================================================
+
+	def tickets
+		@tickets = Ticket.all
+		render json: (@tickets.map { |t| t.as_json }).to_json
 	end
 
 	##==========================================================================

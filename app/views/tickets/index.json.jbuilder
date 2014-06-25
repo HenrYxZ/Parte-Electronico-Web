@@ -1,4 +1,4 @@
 json.array!(@tickets) do |ticket|
-  json.extract! ticket, :id, :municipality, :court, :infractor_name, :vehicle_plate, :vehicle, :citation_day
+  json.extract! ticket, :vehicle_plate, :vehicle, :license_code, :date, :latitude, :longitude, :rut,:first_name, :last_name, :address, :email, :user_id, :location, :description
   json.url ticket_url(ticket, format: :json)
 end

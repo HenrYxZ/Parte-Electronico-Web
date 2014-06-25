@@ -20,6 +20,7 @@ Partes::Application.routes.draw do
     post '/login', to: 'api#login'
     get '/users/:access_token', to: 'api#users'
     post '/new_ticket/:access_token', to: 'api#new_ticket'
+    get 'tickets/:access_token', to: 'api#tickets'
   end
 
 

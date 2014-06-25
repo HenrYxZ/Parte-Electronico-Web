@@ -51,7 +51,8 @@
 </p>
 
 <% @ticket.pictures.each do |picture| %>
-	<% s3 = AWS::S3.new()%>
+	<% s3 = AWS::S3.new(access_key_id: ENV['AWS_ACCESS_KEY_ID'], 
+						secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'])%>
 	<% bucket = s3.buckets['partes-electronicos'] %>
 	<% obj = bucket.objects[picture.file_name]%>
 	<%= image_tag obj.url_for(:get) %>

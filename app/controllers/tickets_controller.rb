@@ -5,6 +5,7 @@ class TicketsController < ApplicationController
   authorize_resource
   # GET /tickets
   # GET /tickets.json
+  # GET /tickets.xls
   def index
     @tickets = Ticket.all
   end
@@ -64,16 +65,17 @@ class TicketsController < ApplicationController
     end
   end
 
+  # Este metodo ya no se usa
   def export_tickets
     @tickets = Ticket.all
     ticket_csv = CSV.generate do |csv|
-      csv << ["Folio", "Nombre", "Apellido", "Dirección", "Comuna", "Email",
-       "Fecha", "Infracciones", "Descripción", "Vehículo", "Patente", "Carabinero"]
+      csv << ["Folio", "Nombre", "Apellido", "Direccion", "Comuna", "Email",
+       "Fecha", "Infracciones", "Descripcion", "Vehiculo", "Patente", "Costo", "Carabinero"]
       @tickets.each do |ticket|
         csv << [ticket.id, ticket.first_name, ticket.last_name, ticket.address, 
           ticket.location, ticket.email, ticket.date.strftime("%d/%m/%Y %I:%M%p"), 
           ticket.infractions.map { |e| e.type_of_infraction }.join(', '),
-          ticket.description, ticket.vehicle, ticket.vehicle_plate, ticket.user.name]
+          ticket.description, ticket.vehicle, ticket.vehicle_plate, ticket.total_cost, ticket.user.name]
       end
     end
     send_data ticket_csv, type: 'text/csv', filename: 'partes.csv'

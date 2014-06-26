@@ -1,4 +1,5 @@
 class Ticket < ActiveRecord::Base
+	include ActionView::Helpers::NumberHelper
 	has_and_belongs_to_many :infractions
 	has_many :pictures
 	belongs_to :user
@@ -34,5 +35,13 @@ class Ticket < ActiveRecord::Base
 				render json: picture.errors, status: :unprocessable_entity
 			end
 		end
+	end
+
+	def total_cost
+		total = 0
+		infractions.each do |infraction|
+			total = total + infraction.cost
+		end
+		return number_to_currency(total, delimiter: ".", precision: 0)
 	end
 end

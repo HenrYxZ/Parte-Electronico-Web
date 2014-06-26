@@ -1,9 +1,41 @@
 
-<h4>hola</h4>
+<h4>Busqueda de partes</h4>
 <%= form_tag root_url , :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= text_field_tag :search, params[:search] , placeholder:"rut"%>
+    <%= submit_tag "Buscar", :name => nil %>
   </p>
 <% end %>
 
+
+<table class =" table table-bordered">
+  <thead>
+    <tr>
+      <th>Folio</th>
+      <th>Rut</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Patente</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= link_to ticket.id, ticket %></td>
+        <td><%= ticket.rut %></td>
+        <td><%= ticket.first_name %></td>
+        <td><%= ticket.last_name %></td>
+        <td><%= ticket.vehicle_plate %></td>
+        <td><%= ticket.date.in_time_zone("Santiago").to_date %></td>
+        <td><%= ticket.date.in_time_zone("Santiago").strftime("%I:%M%p") %></td>
+        <td> 
+          <%= link_to 'Show', ticket %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

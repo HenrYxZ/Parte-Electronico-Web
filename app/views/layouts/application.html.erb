@@ -12,7 +12,7 @@
 
 <header "page-header">
   <div class= "clearfix">
-  <h1 class="span7">Partes Electrónicos</h1>
+  <h2 class="span7">Partes Electrónicos</h2>
   <div class= "pull-right span2" id="login-box">
   <% if current_user%>
       <%= current_user.email %> |
@@ -24,8 +24,10 @@
   </div>
   </div>
 		<ul class="nav nav-tabs span10">
-    <%= content_tag(:li, link_to("Partes", tickets_path), class: current_page?(tickets_path) ? "active" : "")%> 
+    <%= content_tag(:li, link_to("Inicio", root_url), class: current_page?(root_url) ? "active" : "")%> 
 		<% if current_user %>
+
+        <%= content_tag(:li, link_to("Partes", tickets_path), class: current_page?(tickets_path) ? "active" : "")%>     
 
         <%if can? :create, @user %> 
    			<%= content_tag(:li, class: current_page?(users_path)|| current_page?(new_user_path) ? "active dropdown" : "dropdown") do 

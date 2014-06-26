@@ -24,8 +24,8 @@
         <td><%= ticket.first_name %></td>
         <td><%= ticket.last_name %></td>
         <td><%= ticket.vehicle_plate %></td>
-        <td><%= ticket.date.to_date %></td>
-        <td><%= ticket.date.strftime("%I:%M%p") %></td>
+        <td><%= ticket.date.in_timezone("Santiago").to_date %></td>
+        <td><%= ticket.date.in_time_zone("Santiago").strftime("%I:%M%p") %></td>
         <td>
         <% if can? :read, ticket %>  
           <%= link_to 'Show', ticket %>

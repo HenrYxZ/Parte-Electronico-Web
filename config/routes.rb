@@ -16,6 +16,8 @@ Partes::Application.routes.draw do
 
   root to: "home#index"
 
+  get '/export/tickets', to: 'tickets#export_tickets'
+
   scope 'api' do
     post '/login', to: 'api#login'
     get '/users/:access_token', to: 'api#users'

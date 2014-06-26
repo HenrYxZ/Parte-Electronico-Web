@@ -1,3 +1,5 @@
+require 'csv'
+
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   authorize_resource
@@ -62,6 +64,21 @@ class TicketsController < ApplicationController
     end
   end
 
+  def export_tickets
+    @tickets = Ticket.all
+    ticket_csv = CSV.generate do |csv|
+      csv << ["Folio", "Nombre", "Apellido", "Dirección", "Comuna", "Email",
+       "Fecha", "Infracciones", "Descripción", "Vehículo", "Patente", "Carabinero"]
+      @tickets.each do |ticket|
+        csv << [ticket.id, ticket.first_name, ticket.last_name, ticket.address, 
+          ticket.location, ticket.email, ticket.date.strftime("%d/%m/%Y %I:%M%p"), 
+          ticket.infractions.map { |e| e.type_of_infraction }.join(', '),
+          ticket.description, ticket.vehicle, ticket.vehicle_plate, ticket.user.name]
+      end
+    end
+    send_data ticket_csv, type: 'text/csv', filename: 'partes.csv'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,6 +88,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:vehicle_plate, :vehicle, :license_code, :date, :latitude, :longitude, :rut, :first_name, :last_name, :adress, :email)
+      params.require(:ticket).permit(:vehicle_plate, :vehicle, :license_code, :date, :latitude, :longitude, :rut, :first_name, :last_name, :address, :email, :description)
     end
 end

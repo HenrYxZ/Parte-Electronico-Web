@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
 		api_key.access_token
 	end
 
+	def name
+		"#{rank} #{first_name} #{last_name}"
+	end
+
 	private
 	def create_api_key
 		ApiKey.create(user: self) 

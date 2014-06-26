@@ -12,7 +12,7 @@
 	Domicilio: <%= @ticket.address%>
 </p>
 
-<p>Citado a comparecer al <%= @ticket.user.courthouse_number %> juzgado de policía local de <%= @ticket.user.courthouse_city %> el día <%= @ticket.date.to_date+3.days %> a las <%= @ticket.date.strftime("%I:%M%p") %>  bajo apercibimiento de proceder en su rebeldía.
+<p>Citado a comparecer al <%= @ticket.user.courthouse_number %> juzgado de policía local de <%= @ticket.user.courthouse_city %> el día <%= @ticket.date.to_date+3.days %> a las <%= @ticket.date.in_time_zone("Santiago").strftime("%I:%M%p") %>  bajo apercibimiento de proceder en su rebeldía.
 </p>
 
 <h3>Infracciones</h3>

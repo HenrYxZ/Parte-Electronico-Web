@@ -6,6 +6,7 @@ Partes::Application.routes.draw do
   
   resources :sessions
   resources :admins
+  resources :password_resets
 
   get "home/index"
   resources :tickets do

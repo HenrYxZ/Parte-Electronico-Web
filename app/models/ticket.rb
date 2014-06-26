@@ -3,6 +3,7 @@ class Ticket < ActiveRecord::Base
 	has_many :pictures
 	belongs_to :user
 
+
 	def add_infractions (jsonInfractions)
 		jsonInfractions.each do |jsonInfraction|
 			infraction = Infraction.find_by_type_of_infraction(jsonInfraction["type"])

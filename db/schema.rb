@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621233710) do
+ActiveRecord::Schema.define(version: 20140626040821) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
-    t.string   "password_digest", limit: 100
+    t.string   "password_digest",        limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   create_table "api_keys", force: true do |t|

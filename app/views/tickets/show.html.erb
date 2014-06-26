@@ -30,7 +30,7 @@
 </p>
 
 <p>Cometidas en <%= @ticket.location%> , latitud <%= @ticket.latitude%>, longitud <%=@ticket.longitude%> 
-	a las  <%= @ticket.date.strftime("%I:%M%p")%>
+	a las  <%= @ticket.date.in_time_zone("Santiago").strftime("%I:%M%p")%>
 </p>
 
 <p>
@@ -47,7 +47,7 @@
 	Placa: <%= @ticket.user.plaque%>
 </p>
 <p>
-	Fecha: <%= @ticket.date.to_date%>
+	Fecha: <%= @ticket.date.in_time_zone("Santiago").to_date%>
 </p>
 
 <% @ticket.pictures.each do |picture| %>

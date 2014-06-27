@@ -87,4 +87,5 @@ Partes::Application.configure do
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
     :domain => 'parteselectronicos.cl', # your domain to identify your server when connecting
   }
+  config.action_mailer.default_url_options = { :host => "partes-electronicos.herokuapp.com" }
 end

@@ -5,32 +5,32 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.27/jquery.form-validator.min.js"></script>
+ 
 </head>
-<body>
-<div class ="container-fluid span10 offset1">
+<body class="clearfix">
+<div class ="container-fluid span10 offset1 ">
 
-<header "page-header">
-  <div class= "clearfix">
-  <h2 class="span7">Partes Electrónicos</h2>
-  <div class= "pull-right span2" id="login-box">
+<header>
+  <div class= "clearfix" id="header">
+  <h2 class="span6">Partes Electrónicos</h2>
+  <div class= "pull-right span3" id="login-box">
   <% if current_user%>
       <%= current_user.email %> |
-      <%= link_to "Log out", logout_path %>
+      <%= link_to "Cerrar sesión", logout_path %>
       
   <%else%>
-      <%= link_to "log in", login_path %>
+      <%= link_to "Iniciar sesión", login_path %>
   <%end%>
   </div>
   </div>
-		<ul class="nav nav-tabs span10">
+		<ul class="nav nav-tabs ">
     <%= content_tag(:li, link_to("Inicio", root_url), class: current_page?(root_url) ? "active" : "")%> 
 		<% if current_user %>
 
         <%= content_tag(:li, link_to("Partes", tickets_path), class: current_page?(tickets_path) ? "active" : "")%>     
 
         <%if can? :create, @user %> 
-   			<%= content_tag(:li, class: current_page?(users_path)|| current_page?(new_user_path) ? "active dropdown" : "dropdown") do 
+   			<%= content_tag(:li, class: current_page?(users_path)|| current_page?(new_user_path) || current_page?(edit_user_path(@user)) ? "active dropdown" : "dropdown") do 
           link_to("Carabineros", users_path, class: "dropdown-toggle", data:{toggle:"dropdown"})+
           content_tag(:ul, class: "dropdown-menu")do
           
@@ -42,7 +42,7 @@
         <%= content_tag(:li,link_to("Carabineros", users_path), class: current_page?(users_path) ? "active" : "")%>  
         <%end%>
 		    <% if can? :manage, @admin %>
-          <%= content_tag(:li, class: current_page?(admins_path)|| current_page?(new_admin_path) ? "active dropdown" : "dropdown") do 
+          <%= content_tag(:li, class: current_page?(admins_path)|| current_page?(new_admin_path) || current_page?(edit_admin_path(@admin)) ? "active dropdown" : "dropdown") do 
           link_to("Funcionarios", admins_path, class: "dropdown-toggle", data:{toggle:"dropdown"})+
           content_tag(:ul, class: "dropdown-menu")do
 
@@ -57,10 +57,12 @@
 
 	
 </header>
+<div id= "yield">
 <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, :id =>"notice" %>
   <% end %>
 <%= yield %>
+</div>
 </div>
 </body>
 </html>

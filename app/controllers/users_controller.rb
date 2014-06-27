@@ -16,10 +16,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @new="Crear"
   end
 
   # GET /users/1/edit
   def edit
+    @new="Editar"
   end
 
   # POST /users
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to users_path, notice: 'Carabinero creado con éxito' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -43,7 +45,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Carabinero modificado con éxito' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

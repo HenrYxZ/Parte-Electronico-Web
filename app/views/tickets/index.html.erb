@@ -1,4 +1,4 @@
-<h1>Listado de partes</h1>
+
 
 <%= link_to 'Descargar en Excel', tickets_path(format: :xls) %>
 
@@ -28,10 +28,10 @@
         <td><%= ticket.date.in_time_zone("Santiago").strftime("%I:%M%p") %></td>
         <td>
         <% if can? :read, ticket %>  
-          <%= link_to 'Show', ticket %>
+          <%= link_to 'Mostrar', ticket %>
         <%end%>
         <% if can? :update, ticket %>
-          <%= link_to 'Edit', edit_ticket_path(ticket) %>
+          <%= link_to 'Editar', edit_ticket_path(ticket) %>
         <%end%>
       </tr>
     <% end %>

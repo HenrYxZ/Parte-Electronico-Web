@@ -13,9 +13,85 @@
  *= require_tree .
  */
 
+html, body {
+
+	min-height: 100%;
+	background-color: rgb(28, 167, 78) !important;
+}
+
 
 #login-box{
 	padding: 2%;
 	padding-right: 0px;
 
 }
+
+#yield{
+	padding: 30px;
+}
+
+#header{
+	background-color: white ;
+	width: 100% !important;
+	border-radius: 15px 15px 0px 0px;
+
+}
+
+.nav{
+	background-color: rgb(5, 94, 65);
+
+}
+
+.nav-tabs li a {
+	color: white;
+}
+
+
+.container-fluid{
+  background-color: white;
+  border-radius: 15px 15px 0px 0px;
+  border: solid rgb(5, 94, 65);
+  min-height: 100%;           
+  height: 150vh;    
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
+}
+
+div.actions {
+  margin-top: 10px;
+}
+
+form div.field {
+  margin-bottom: 5px;
+}
+
+form div.field:after {
+  content: "";
+  display: block;
+  clear: both; 
+}
+
+form div.field label {
+  float: left;
+  clear: left;
+  width: 200px;
+  line-height: 35px;
+  vertical-align: center;
+  text-align: right;
+}
+
+form div.field input, form div.field textarea {
+  float: left;
+  margin-left: 10px;
+}
+
+select#admin_role{
+	float: left;
+  margin-left: 10px;
+}
+
+form div.actions {
+  margin-left: 210px;
+}
+

@@ -6,10 +6,10 @@
 </p>
 
 <p>
-  <strong>Role:</strong>
+  <strong>Rol:</strong>
   <%= @admin.role %>
 </p>
 
 <% if can? :update, @admin %>
-	<%= link_to 'Edit', edit_admin_path(@admin) %> 
+	<%= link_to 'Editar', edit_admin_path(@admin) %> 
 <%end%>

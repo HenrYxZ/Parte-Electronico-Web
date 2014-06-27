@@ -1,7 +1,6 @@
 <%= form_for @admin, :url => password_reset_path(params[:id]) do |f| %>
   <% if @admin.errors.any? %>
     <div class="error_messages">
-      <h2>Form is invalid</h2>
       <ul>
         <% for message in @admin.errors.full_messages %>
           <li><%= message %></li>
@@ -10,11 +9,11 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "Contraseña" %>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %>
+    <%= f.label "Confirmación de contraseña" %>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions"><%= f.submit "Editar Contraseña" %></div>

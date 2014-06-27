@@ -1,0 +1,20 @@
+es:
+  errors:
+    messages:
+      accepted: "debe ser aceptado"
+      blank: "no puede estar en blanco"
+      confirmation: "no coincide con la confirmación"
+      empty: "no puede estar vacío"
+      even: "debe ser par"
+      exclusion: "está reservado"
+      inclusion: "no está incluido en la lista"
+      invalid: "no es válido"
+      not_a_number: "no es un número"
+      not_an_integer: "debe ser un entero"
+      odd: "debe ser impar"
+      taken: "ya está en uso"
+  helpers:
+    submit:
+      create: "Crear" 
+      submit: "Guardar" 
+      update: "Actualizar" 

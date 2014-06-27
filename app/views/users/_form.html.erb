@@ -1,7 +1,8 @@
-<%= form_for(@user) do |f| %>
+<div class= "well clearfix span7 offset1">
+<%= form_for(@user, class: "span5 offset3")  do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> No se pudo guardar:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -12,43 +13,44 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :username %><br>
+    <%= f.label "Nombre de usuario" %><br>
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
+    <%= f.label "Contraseña" %><br>
     <%= f.text_field :password %>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br>
+    <%= f.label "Nombre" %><br>
     <%= f.text_field :first_name %>
   </div>
    <div class="field">
-    <%= f.label :last_name %><br>
+    <%= f.label "Apellido" %><br>
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :precint %><br>
+    <%= f.label "Comisaría" %><br>
     <%= f.text_field :precint %>
   </div>
  
   <div class="field">
-    <%= f.label :courthouse_number %><br>
+    <%= f.label "n° Juzgado" %><br>
     <%= f.number_field :courthouse_number %>
   </div>
   <div class="field">
-    <%= f.label :courthouse_city %><br>
+    <%= f.label "Ciudad de juzgado" %><br>
     <%= f.text_field :courthouse_city %>
   </div>
    <div class="field">
-    <%= f.label :plaque %><br>
+    <%= f.label "placa" %><br>
     <%= f.text_field :plaque %>
   </div>
   <div class="field">
-    <%= f.label :rank %><br>
+    <%= f.label "rango" %><br>
     <%= f.text_field :rank %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit @new %>
   </div>
 <% end %>
+</div>

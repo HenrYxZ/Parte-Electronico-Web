@@ -1,7 +1,8 @@
+<div class= "well clearfix span7 offset1">
 <%= form_for(@admin, id:'admin_form') do |f| %>
   <% if @admin.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+      <h2><%= pluralize(@admin.errors.count, "error") %> No se pudo guardar:</h2>
 
       <ul>
       <% @admin.errors.full_messages.each do |msg| %>
@@ -16,18 +17,19 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
+    <%= f.label "Contraseña" %><br>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br>
+    <%= f.label "Confirmación de contraseña" %><br>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :role %><br>
+    <%= f.label "Rol" %><br>
     <%= f.select :role, ["admin", "municipalidad", "juez"], include_blank: false %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit @new %>
   </div>
 <% end %>
+</div>

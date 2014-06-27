@@ -11,7 +11,7 @@ class Ability
     elsif admin.role=="juez"
 
       can :read, [User,Ticket]
-      can :update, Ticket  
+     # can :update, Ticket  
       
     elsif admin.role=="municipalidad"
       can :read, [User,Ticket] 

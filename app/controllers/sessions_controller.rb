@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     admin = Admin.find_by_email(params[:email])
   	if admin
     	session[:admin_id] = admin.id
-    	redirect_to root_url, :notice => "Logged in!"
+    	redirect_to root_url, :notice => "Sesión iniciada!"
   	else
-    	flash.now.alert = "Invalid email or password"
+    	flash.now.alert = "email o contraseña inválida"
     	render "new"
   	end
   end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:admin_id] = nil
-  	redirect_to root_url, :notice => "Logged out!"
+  	redirect_to root_url, :notice => "Sesión cerrada!"
   end
 
 end

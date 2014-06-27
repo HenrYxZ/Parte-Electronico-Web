@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Datos del infractor</h3>
+<div class= "well clearfix span6 offset1 ">
+<h4>Datos del infractor</h4>
 <p>
 	Nombre: <%= @ticket.first_name %>
     <%= @ticket.last_name%>
@@ -15,7 +16,7 @@
 <p>Citado a comparecer al <%= @ticket.user.courthouse_number %> juzgado de policía local de <%= @ticket.user.courthouse_city %> el día <%= @ticket.date.to_date+3.days %> a las <%= @ticket.date.in_time_zone("Santiago").strftime("%I:%M%p") %>  bajo apercibimiento de proceder en su rebeldía.
 </p>
 
-<h3>Infracciones</h3>
+<h4>Infracciones</h4>
 <p>
 	<% @ticket.infractions.each do |infraction|%>
 		<%= infraction.type_of_infraction%>
@@ -49,6 +50,8 @@
 <p>
 	Fecha: <%= @ticket.date.in_time_zone("Santiago").to_date%>
 </p>
+
+</div>
 
 <% @ticket.pictures.each do |picture| %>
 	<% s3 = AWS::S3.new(access_key_id: ENV['AWS_ACCESS_KEY_ID'], 

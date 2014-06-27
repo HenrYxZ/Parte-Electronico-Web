@@ -25,13 +25,13 @@
         <td><%= user.rank %></td>
         <td>
         <% if can? :read, @user %>
-        <%= link_to 'Show', user %>
+        <%= link_to 'Mostrar', user %>
         <%end%>
         <% if can? :update, @user %>
-        <%= link_to 'Edit', edit_user_path(user) %>
+        <%= link_to 'Editar', edit_user_path(user) %>
         <%end%>
          <% if can? :destroy, @user %>
-        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Are you sure?' } %>
         <%end%>
       </td>
       </tr>

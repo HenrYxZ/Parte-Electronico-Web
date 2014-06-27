@@ -4,11 +4,6 @@
   xmlns:x="urn:schemas-microsoft-com:office:excel"
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
-  <Styles>
-    <Style ss:ID="Currency">
-      <NumberFormat ss:Format="Currency" />
-    </Style>
-  </Styles>
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
@@ -31,7 +26,7 @@
         <Cell><Data ss:Type="Number"><%= ticket.id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= ticket.first_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= ticket.last_name %></Data></Cell>
-        <Cell><Data ss:ID="Currency" ss:Type="Number"><%= ticket.total_cost %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= ticket.total_cost %></Data></Cell>
         <Cell><Data ss:Type="String"><%= ticket.address %></Data></Cell>
         <Cell><Data ss:Type="String"><%= ticket.location %></Data></Cell>
         <Cell><Data ss:Type="String"><%= ticket.email %></Data></Cell>

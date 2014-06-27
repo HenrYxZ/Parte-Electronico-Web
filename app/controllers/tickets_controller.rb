@@ -68,7 +68,7 @@ class TicketsController < ApplicationController
   # Este metodo ya no se usa
   def export_tickets
     @tickets = Ticket.all
-    ticket_csv = CSV.generate do |csv|
+    ticket_csv = CSV.generate((col_sep: "\t")) do |csv|
       csv << ["Folio", "Nombre", "Apellido", "Direccion", "Comuna", "Email",
        "Fecha", "Infracciones", "Descripcion", "Vehiculo", "Patente", "Costo", "Carabinero"]
       @tickets.each do |ticket|
